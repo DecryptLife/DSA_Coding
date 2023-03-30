@@ -49,7 +49,7 @@ public class BFS {
     }
 
     public static void main(String[] args) {
-        int v = 5;
+        int v = 7;
 
         ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(v);
 
@@ -60,11 +60,10 @@ public class BFS {
 
         addEdge(adj,0,1);
         addEdge(adj,0,2);
-        addEdge(adj,1,2);
         addEdge(adj,1,3);
         addEdge(adj,2,3);
-        addEdge(adj,2,4);
-        addEdge(adj,3,4);
+
+
 
         printGraph(adj);
 
