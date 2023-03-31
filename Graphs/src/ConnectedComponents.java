@@ -35,8 +35,12 @@ public class ConnectedComponents {
         {
             if(visited[i] == false)
             {
-                BFSOut(adj, i, visited);
                 count++;
+                for(int n:adj.get(i))
+                {
+                    if(visited[n] == false)
+                        visited[n] = true;
+                }
             }
         }
 
