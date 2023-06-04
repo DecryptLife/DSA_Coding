@@ -1,25 +1,24 @@
 public class isPowerOfThree {
-    public static void main(String[] args) {
-        int n1 = 27;
-        int n2 = 36;
-        int n3 = 0;
 
-        System.out.println("Is "+n1+" power of three?: "+isPowerOfThree(n1));
-        System.out.println("Is "+n2+" power of three?: "+isPowerOfThree(n2));
-        System.out.println("Is "+n3+" power of three?: "+isPowerOfThree(n3));
-
-    }
-
-    public static boolean isPowerOfThree(int n)
+    public static boolean check(int n)
     {
-        if(n == 1)
+        if(n==1)
             return true;
-        if(n<1 || n%3 != 0)
-        {
-            return false;
-        }
+        if(n%3 != 0)
+                return false;
 
-        return isPowerOfThree(n/3);
+
+        return check(n/3);
+    }
+    public static void main(String[] args) {
+        int n1 = 3;
+        int n2 = 27;
+        int n3 = 36;
+
+        System.out.println(n1+" is "+check(n1));
+        System.out.println(n2+" is "+check(n2));
+        System.out.println(n3+" is "+check(n3));
+
 
     }
 }

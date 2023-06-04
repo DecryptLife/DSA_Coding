@@ -14,20 +14,21 @@ public class binarysearch {
 
     static int binSearch(int[] arr,int ele, int lb, int  ub)
     {
-        int mid = (ub + lb)/2;
+
+        int mid = (lb+ub)/2;
+
         if(arr[mid] == ele)
-        {
             return mid;
-        }
 
         if(arr[mid] > ele)
         {
-            return binSearch(arr, ele, lb, mid);
+            return binSearch(arr,ele,0,mid);
         }
         else
         {
             return binSearch(arr,ele,mid,ub);
         }
+
 
 
     }
