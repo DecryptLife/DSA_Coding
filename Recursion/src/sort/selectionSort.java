@@ -1,3 +1,5 @@
+package sort;
+
 public class selectionSort {
 
     static int[] sort(int[] arr)
@@ -21,12 +23,11 @@ public class selectionSort {
 
             return helper(arr, start+1, end, pos);
         }
-        else
-        {
+        else {
             int temp = arr[pos];
             arr[pos] = arr[end];
             arr[end] = temp;
-            return helper(arr, 0, end-1,0);
+            return helper(arr, 0, end - 1, 0);
         }
     }
 
