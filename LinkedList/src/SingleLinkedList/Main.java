@@ -1,4 +1,6 @@
-package LinkedList.src;
+package LinkedList.src.SingleLinkedList;
+
+import LinkedList.src.SingleLinkedList.LL;
 
 public class Main {
 

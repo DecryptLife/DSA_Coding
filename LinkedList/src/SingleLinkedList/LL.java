@@ -1,4 +1,4 @@
-package LinkedList.src;
+package LinkedList.src.SingleLinkedList;
 
 public class LL {
 

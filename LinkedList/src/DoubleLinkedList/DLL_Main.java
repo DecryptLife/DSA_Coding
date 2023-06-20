@@ -1,4 +1,6 @@
-package LinkedList.src;
+package LinkedList.src.DoubleLinkedList;
+
+import LinkedList.src.DoubleLinkedList.DLL;
 
 public class DLL_Main {
 
