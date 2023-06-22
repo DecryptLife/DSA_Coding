@@ -11,6 +11,15 @@ package LinkedList.src.Leetcode;
  * }
  */
 class removeDup {
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
     public ListNode deleteDuplicates(ListNode head) {
 
         if(head == null || head.next == null)

@@ -10,6 +10,18 @@ package LinkedList.src.Leetcode;
  * }
  */
 public class MergeSortedLists {
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(){
+
+        }
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
         ListNode dummyHead = new ListNode();
