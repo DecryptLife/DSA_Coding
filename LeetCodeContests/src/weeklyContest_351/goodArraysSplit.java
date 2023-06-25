@@ -1,3 +1,5 @@
+package weeklyContest_351;
+
 public class goodArraysSplit {
     public static boolean checkLeft(int pos, int[] nums)
     {
