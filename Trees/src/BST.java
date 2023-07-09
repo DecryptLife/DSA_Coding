@@ -122,6 +122,52 @@ public class BST {
         return Math.abs(height(node.left) - height(node.right)) <= 1 && balanced(node.left) && balanced(node.right);
     }
 
+    public void preOrder(){
+        preOrder(root);
+    }
+
+    public void preOrder(Node node)
+    {
+        if(node == null)
+            return;
+
+        System.out.print(node.value+" ");
+
+        preOrder(node.left);
+        preOrder(node.right);
+
+    }
+
+    public void inOrder()
+    {
+        inOrder(root);
+    }
+
+    public void inOrder(Node node){
+        if(node == null)
+            return;
+
+        inOrder(node.left);
+        System.out.print(node.value+" ");
+        inOrder(node.right);
+
+    }
+
+    public void postOrder()
+    {
+        postOrder(root);
+    }
+    public void postOrder(Node node){
+        if(node == null)
+            return;
+
+        postOrder(node.left);
+        postOrder(node.right);
+
+
+        System.out.print(node.value+" ");
+    }
+
     public static void main(String[] args) {
         BST tree = new BST();
         int[] nums = {5,2,7,1,4,6,9,8,3,10};
@@ -129,6 +175,13 @@ public class BST {
 //        tree.display();
 
         tree.prettyDisplay();
+        tree.preOrder();
+
+        System.out.println();
+        tree.inOrder();
+
+        System.out.println();
+        tree.postOrder();
     }
 
 }
