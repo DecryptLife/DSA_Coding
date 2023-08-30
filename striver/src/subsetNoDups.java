@@ -16,9 +16,8 @@ public class subsetNoDups {
     public static List<List<Integer>> subsNoDups(int[] arr){
         Arrays.sort(arr);
         List<List<Integer>> outer = new ArrayList<>();
-        List<Integer> inner = new ArrayList<>();
 
-        helper(0, arr, outer, inner);
+        helper(0, arr, outer, new ArrayList<>());
         return outer;
     }
 
