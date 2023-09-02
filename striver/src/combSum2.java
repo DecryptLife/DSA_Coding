@@ -32,9 +32,9 @@ public class combSum2 {
     public static void main(String[] args) {
         int[] arr = {10,1,2,7,6,1,5};
 
-        List<List<Integer>> res = combinationSum2(arr, 8);
+        List<List<Integer>> sol = combinationSum2(arr, 8);
 
-        System.out.println(res);
+        System.out.println(sol);
     }
 
 }
