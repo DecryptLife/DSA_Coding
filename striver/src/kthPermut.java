@@ -1,32 +1,37 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class kthPermut {
 
-    public static String getPerms(int n, int k){
-        String s = "";
-        for(int i=1;i<=n;i++)
-            s+=i;
+    public static String getPerms(int n, int k) {
+        int fact = 1;
 
-        ArrayList<String> res = new ArrayList<>();
-
-        helper("",s,res);
-
-        return res.get(k-1);
-    }
-    public static void helper(String p, String up, ArrayList<String> res){
-
-        if(up.isEmpty()){
-            res.add(p);
-            return;
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for(int i=1;i<n;i++){
+            fact = fact * i;
+            numbers.add(fact);
         }
-        for(int i=0;i<up.length();i++)
-        {
-            helper(p+up.charAt(i),up.substring(0,i)+up.substring(i+1,up.length()),res);
+
+        numbers.add(n);
+        String ans = "";
+        k = k-1;
+        while(true){
+            ans = ans + numbers.get(k/fact);
+            numbers.remove(k/fact);
+            if(numbers.isEmpty())
+            {
+                break;
+            }
+
+            k = k % fact;
+            fact =  fact/numbers.size();
         }
+
+        return ans;
     }
     public static void main(String[] args) {
         int n=3;
-        int k=4;
+        int k=3;
         System.out.println(getPerms(n,k));
     }
 }
