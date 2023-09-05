@@ -2,13 +2,16 @@ import java.util.ArrayList;
 
 public class kthPermut {
 
-    public static ArrayList<String> getPerms(String s){
+    public static String getPerms(int n, int k){
+        String s = "";
+        for(int i=1;i<=n;i++)
+            s+=i;
 
         ArrayList<String> res = new ArrayList<>();
 
         helper("",s,res);
 
-        return res;
+        return res.get(k-1);
     }
     public static void helper(String p, String up, ArrayList<String> res){
 
@@ -22,8 +25,8 @@ public class kthPermut {
         }
     }
     public static void main(String[] args) {
-        String s = "123";
-
-        System.out.println(getPerms(s));
+        int n=3;
+        int k=3;
+        System.out.println(getPerms(n,k));
     }
 }
