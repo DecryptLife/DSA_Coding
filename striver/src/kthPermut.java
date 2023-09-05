@@ -26,7 +26,7 @@ public class kthPermut {
     }
     public static void main(String[] args) {
         int n=3;
-        int k=3;
+        int k=4;
         System.out.println(getPerms(n,k));
     }
 }
