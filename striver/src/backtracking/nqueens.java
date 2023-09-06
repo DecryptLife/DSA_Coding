@@ -10,12 +10,12 @@ public class nqueens {
         List<List<String>> boards =  new ArrayList<>();
         boolean[][] visited = new boolean[n][n];
         int count =0;
-        helper(n, visited, new ArrayList<>(), boards,0, count);
+        helper(n, visited, new ArrayList<>(), boards,0);
         System.out.println(count);
         return boards;
     }
 
-    public static void helper(int n, boolean[][] placed, List<String> inner, List<List<String>> outer, int row, int count)
+    public static void helper(int n, boolean[][] placed, List<String> inner, List<List<String>> outer, int row)
     {
         if(row == placed.length && n == 0)
         {
@@ -27,8 +27,8 @@ public class nqueens {
             System.out.println("check on "+row+" , "+i);
             if(isValid(row,i,placed)){
                 placed[row][i] = true;
-                createBoard(inner, i,placed.length);
-                helper(n-1, placed,inner, outer, row+1, count);
+                inner.add(".".repeat(i)+"Q"+".".repeat(placed.length-i-1));
+                helper(n-1, placed,inner, outer, row+1);
                 placed[row][i] = false;
                 inner.remove(inner.size()-1);
             }
@@ -50,7 +50,7 @@ public class nqueens {
     public static boolean isValid(int row, int col, boolean[][] visited){
 
         // check vertical
-        for(int i=0; i<visited[1].length; i++){
+        for(int i=0; i<visited.length; i++){
             if(i == row) continue;
 
             if(visited[i][col]) return false;
@@ -110,7 +110,7 @@ public class nqueens {
         return true;
     }
     public static void main(String[] args) {
-        int n = 1;
+        int n = 4;
 
         System.out.println(queens(n));
     }
