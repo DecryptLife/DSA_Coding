@@ -1,6 +1,8 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class numProvinces {
 
@@ -24,20 +26,48 @@ public class numProvinces {
 
         int count = 0;
 
+//        for(int i=1;i<adj.size();i++){
+//
+//            if(!visited[i])
+//                count++;
+//
+//            for(Integer j: adj.get(i)){
+//                if(!visited[j])
+//                    visited[j] =  true;
+//            }
+//
+//        }
+
         for(int i=1;i<adj.size();i++){
-
-            if(!visited[i])
+            if(!visited[i]){
                 count++;
-
-            for(Integer j: adj.get(i)){
-                if(!visited[j])
-                    visited[j] =  true;
+                bfs(adj, visited, i);
             }
-
         }
+
+
+
 
         return count;
 
+    }
+    public static void bfs(ArrayList<ArrayList<Integer>> adj, boolean[] visited,int node){
+
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(node);
+        visited[node] = true;
+
+        while(!queue.isEmpty()){
+            int num = queue.poll();
+
+            for(Integer i:adj.get(num)){
+                if(!visited[i]){
+                    visited[i] = true;
+                    queue.add(i);
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
