@@ -31,17 +31,17 @@ public class dfs_graphs {
 
     public static void helper(ArrayList<ArrayList<Integer>> adj, boolean[] visited, ArrayList<Integer> bfs, int node){
 
-        if(visited[node])
-            return;
 
-        if(!visited[node]){
             visited[node] = true;
             bfs.add(node);
 
             for(Integer i:adj.get(node)){
-                helper(adj, visited, bfs, i);
+                if(!visited[i]) {
+                    helper(adj, visited, bfs, i);
+                }
+
             }
-        }
+
 
 
 
