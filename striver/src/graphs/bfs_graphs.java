@@ -12,26 +12,30 @@ public class bfs_graphs {
         adj.get(v).add(u);
     }
 
-    public static ArrayList<Integer>  bfs(ArrayList<ArrayList<Integer>> adj){
+    public static ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj){
 
+        boolean[] visited = new boolean[adj.size()];
         Queue<Integer> queue = new LinkedList<>();
         ArrayList<Integer> bfs = new ArrayList<>(adj.size());
+
         queue.add(1);
-        boolean[] visited = new boolean[adj.size()];
         visited[1] = true;
+
         while(!queue.isEmpty()){
-            Integer num = queue.poll();
+            int num = queue.poll();
             bfs.add(num);
-            for(Integer it:adj.get(num)){
-                if(!visited[it]){
-                    visited[it] = true;
-                    queue.add(it);
+
+            for(Integer i:adj.get(num)){
+                if(!visited[i]){
+                    visited[i] = true;
+                    queue.add(i);
                 }
             }
         }
 
         return bfs;
     }
+
 
 
     static void printGraph(ArrayList<ArrayList<Integer>> adj)
