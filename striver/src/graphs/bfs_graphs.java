@@ -12,30 +12,57 @@ public class bfs_graphs {
         adj.get(v).add(u);
     }
 
+//    public static ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj){
+//
+//        boolean[] visited = new boolean[adj.size()];
+//        Queue<Integer> queue = new LinkedList<>();
+//        ArrayList<Integer> bfs = new ArrayList<>(adj.size());
+//
+//        queue.add(1);
+//        visited[1] = true;
+//
+//        while(!queue.isEmpty()){
+//            int num = queue.poll();
+//            bfs.add(num);
+//
+//            for(Integer i:adj.get(num)){
+//                if(!visited[i]){
+//                    visited[i] = true;
+//                    queue.add(i);
+//                }
+//            }
+//        }
+//
+//        return bfs;
+//    }
+
+
     public static ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj){
 
-        boolean[] visited = new boolean[adj.size()];
-        Queue<Integer> queue = new LinkedList<>();
-        ArrayList<Integer> bfs = new ArrayList<>(adj.size());
+        ArrayList<Integer> bfs = new ArrayList<>();
 
-        queue.add(1);
+        boolean[] visited = new boolean[adj.size()];
         visited[1] = true;
 
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(1);
+
         while(!queue.isEmpty()){
-            int num = queue.poll();
+            Integer num = queue.poll();
             bfs.add(num);
 
-            for(Integer i:adj.get(num)){
-                if(!visited[i]){
-                    visited[i] = true;
-                    queue.add(i);
+            for(Integer ele:adj.get(num)){
+                if(!visited[ele])
+                {
+                    visited[ele] = true;
+                    queue.add(ele);
                 }
             }
         }
 
         return bfs;
-    }
 
+    }
 
 
     static void printGraph(ArrayList<ArrayList<Integer>> adj)
