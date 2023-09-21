@@ -33,7 +33,7 @@ public class rottenOrange {
                     visited[row][col] = 0;
                 }
 
-                if(visited[row][col] == 1)
+                if(matrix[row][col] == 1)
                     cFresh +=1;
             }
         }
@@ -66,7 +66,7 @@ public class rottenOrange {
         }
 
         // check if all oranges rotten
-//        if(count != cFresh) return -1;
+        if(count != cFresh) return -1;
         return tm;
     }
 
