@@ -35,7 +35,7 @@ public class replaceOX {
             }
 
             if(visited[i][n-1] == 0 && board[i][n-1] == 'O'){
-                dfs(board, m-1, i, d_row,d_col, visited);
+                dfs(board, i,n-i, d_row,d_col, visited);
             }
         }
 
@@ -46,19 +46,11 @@ public class replaceOX {
             }
         }
 
-//        for(int i=0;i<visited.length;i++){
-//            for (int j=0;j<visited[0].length;j++){
-//                System.out.print(visited[i][j]+ " ");
-//            }
-//            System.out.println();
-//        }
-
         return board;
     }
 
     public static void dfs(char[][] board, int row, int col, int[] d_row, int[] d_col, int[][] visited){
 
-        System.out.println("Visited row: "+row+" col: "+col);
        visited[row][col] = 1;
 
         int m = board.length;
@@ -68,14 +60,15 @@ public class replaceOX {
             int r = row + d_row[i];
             int c = col + d_col[i];
             if( r >= 0 && c >=0 && r < m && c < n && board[r][c] == 'O' && visited[r][c] == 0){
+
                 dfs(board, r,c, d_row, d_col, visited);
             }
         }
     }
     public static void main(String[] args) {
         char[][] arr = {
-                {'O','X','O','X'},
-                {'X','O','X','O'},
+                {'O','O','O','X'},
+                {'X','X','X','O'},
                 {'X','O','O','X'},
                 {'X','O','X','O'},
                 {'O','X','O','O'},
