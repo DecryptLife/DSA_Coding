@@ -5,7 +5,7 @@ import java.util.List;
 
 public class safeStatesDFS {
     
-    public static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v){
+    public static void addEdge(ArrayList<ArrayList<Integer>> adj, int u, int v){ 
         adj.get(u).add(v);
     }
 
