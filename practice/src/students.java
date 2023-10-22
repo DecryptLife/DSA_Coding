@@ -6,11 +6,12 @@ public class students {
         int courses = 1;
         int slow = 0;
         int fast = 0;
-        for(int i=0;i<points.length;){
+        for(int i=1;i<points.length;){
             // slow = points[i+1] - min;
             // fast = points[i+2] - min;
-            System.out.println("At course: "+points[i]);
-            if(i+1 <points.length && points[i+1] - min >= threshold)
+            slow = points[i] - min;
+            if(i+1 < points.length ) fast = points[i+1];
+            if(slow >= threshold || fast >= threshold)
             {
                 return courses+1;
             }
@@ -24,7 +25,7 @@ public class students {
     }
 
     public static void main(String[] args) {
-        int[] points = {1,2,3,5,8};
+        int[] points = {1,2,3};
         int threshold =2;
 
         System.out.println(findMin(points, threshold));
