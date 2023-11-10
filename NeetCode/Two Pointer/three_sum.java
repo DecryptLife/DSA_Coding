@@ -1,26 +1,33 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        
-        HashMap<Integer,Integer> hash = new HashMap<>();
-        List<List<Integer>> res = new ArrayList<>();
-        int sum = 0;
-        Set<List<Integer>> set = new HashSet<>();
         Arrays.sort(nums);
-        for(int i=0;i<nums.length;i++){
-            for(int j=i+1;j<nums.length;j++){
+        int n = nums.length;
+        List<List<Integer>> res = new ArrayList<>();
+        for(int i=0;i<n;i++){
 
-                sum = -(nums[i]+nums[j]);
+            if(i!=0 && nums[i] == nums[i-1]) continue;
 
-                if(hash.containsKey(sum)){
-                    int index = hash.get(sum);
-                    List<Integer> newList = new ArrayList<>(Arrays.asList(nums[i], sum, nums[j]));
+            int j= i+1;
+            int k=n-1;
 
-                    if((index != i || index != j )&& set.add(newList)) res.add(newList);
+            while(j<k){
+
+                int sum = nums[i]+nums[j]+nums[k];
+                if(sum > 0){
+                    k--;
                 }
-
-                hash.put(nums[j], j);
+                else if(sum < 0){
+                    j++;
+                }
+                else{
+                    res.add(new ArrayList<>(Arrays.asList(nums[i],nums[j],nums[k])));
+                    j++;
+                    k--;
+                    
+                    while(j<k && nums[j] == nums[j-1]) j++;
+                    while(j<k && nums[k] == nums[k+1]) k--;
+                }
             }
-            hash = new HashMap<>();
         }
 
         return res;
