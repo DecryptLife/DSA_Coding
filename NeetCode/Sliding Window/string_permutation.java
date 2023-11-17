@@ -3,30 +3,39 @@ class Solution {
         
         int left = 0;
         int right = s1.length();
-        String sub = "";
-        char[] s1_arr = s1.toCharArray();
-        char[] sub_arr = new char[right];
-        Arrays.sort(s1_arr);
 
-        while(left + right <= s2.length()){
+        if(s1.length() > s2.length()) return false;
+    
+        int[] data = new int[26];
+        int[] test = new int[26];
 
-            sub = s2.substring(left,left+right);
-            sub_arr = sub.toCharArray();
-            Arrays.sort(sub_arr);
-            boolean check = true;
-            for(int i=0;i<s1.length();i++){
-                if(s1_arr[i] != sub_arr[i]){
-                    check = false;
-                    break;
-                }
-            }
+        for(char ch: s1.toCharArray()) data[ch - 'a']++;
 
-            if(check) return true;
+        for(int i=0;i<s1.length();i++) test[s2.charAt(i) - 'a']++;
+
+
+        while(left + right < s2.length()){
+
+            // check if equal
+            if(permutation(data,test)) return true;
+
+            test[s2.charAt(left+right) - 'a']++;
+            test[s2.charAt(left)-'a']--;
 
             left++;
-
         }
 
-        return false;
+        return permutation(test,data);
+    }
+
+    public boolean permutation(int[] data, int[] test){
+
+        for(int i=0;i<26;i++){
+            if(data[i] != test[i]){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
