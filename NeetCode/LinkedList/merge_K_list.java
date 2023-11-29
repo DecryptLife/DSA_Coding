@@ -1,51 +1,53 @@
-public /**
-* Definition for singly-linked list.
-* public class ListNode {
-*     int val;
-*     ListNode next;
-*     ListNode() {}
-*     ListNode(int val) { this.val = val; }
-*     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-* }
-*/
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
-   public ListNode mergeKLists(ListNode[] lists) {
+    public ListNode mergeKLists(ListNode[] lists) {
+        
+        return partition(lists, 0, lists.length -1);
 
-       ListNode res = new ListNode(0);
+    }
 
-       for(ListNode list:lists){
-           res.next = merge(res.next, list);
-       }
+    public ListNode partition(ListNode[] lists, int start, int end){
 
+        if(start == end){
+            return lists[start];
+        }
 
-       return res;
-   }
+        int mid = start + (end - start)/2;
+        if(start < end){
 
-   public ListNode merge(ListNode list1, ListNode list2){
+            ListNode l1 = partition(lists, start, mid);
+            ListNode l2 = partition(lists, mid+1, end);
 
-       ListNode dummyHead = new ListNode(0);
-       ListNode tail = dummyHead;
+            return merge(l1,l2);
+        }
+        else{
+            return null;
+        }
+    }
 
-       while(list1 !=  null && list2 != null){
+    public ListNode merge(ListNode list1, ListNode list2){
 
-           if(list1.val <= list2.val){
-               tail.next = list1;
-           }
-           else{
-               tail.next = list2;
-           }
+            if(list1 == null) return list2;
+            if(list2 == null) return list1;
 
-           tail = tail.next;
-       }
-
-
-       if(list1 !=  null){tail.next = list1;}
-       else{
-           tail.next = list2;
-       }
-
-       return dummyHead.next;
-   }
-} merge_K_list {
+            if(list1.val <= list2.val){
+                list1.next = merge(list1.next, list2);
+                return list1;
+            }
+            else{
+                list2.next = merge(list1, list2.next);
+                return list2;
+            }
     
+
+    }
 }
