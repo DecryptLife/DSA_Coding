@@ -10,7 +10,7 @@ public class micro1 {
 
     public static HashMap<String,Integer> countWords(String sentence){
 
-        String[] str = sentence.split("[\\. ,!]");
+        String[] str = sentence.replaceAll("[!.,]","").split(" ");
         HashMap<String, Integer> map = new HashMap<>();
         for(int i=0;i<str.length;i++){
 
