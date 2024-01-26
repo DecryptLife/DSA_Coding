@@ -1,44 +1,20 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
         
-        HashSet<String> set = new HashSet<>();
+        int n = text1.length();
+        int m = text2.length();
 
-        ArrayList<String> list1 = subs("", text1);
-
-        ArrayList<String> list2 = subs("", text2);
-
-        for(int i=0;i<list1.size();i++){
-            set.add(list1.get(i));
-        }
-
-        int len_max = 0;
-
-        for(int i=0;i<list2.size();i++){
-            String s = list2.get(i);
-            if(set.contains(s)){
-                len_max = Math.max(len_max, s.length());
-            }
-        }
-        
-        return len_max;
+        return subs(n-1,m-1, text1, text2);
     }
 
-    public ArrayList<String> subs(String p, String up){
+    public int subs(int i, int j, String s1, String s2){
 
-        if(up.isEmpty()){
-            ArrayList<String> inner = new ArrayList<>();
-            inner.add(p);
-            return inner;
-        } 
-        ArrayList<String> left = subs(p+up.charAt(0), up.substring(1));
-        ArrayList<String> right = subs(p+"", up.substring(1));
+        if(i<0 || j<0) return 0;
 
-        left.addAll(right);
+        if(s1.charAt(i) == s2.charAt(j)){
+            return 1 + subs(i-1,j-1, s1, s2);
+        }
 
-        return left;
-
+        return Math.max(subs(i-1,j, s1, s2), subs(i,j-1, s1, s2));
     }
 }
